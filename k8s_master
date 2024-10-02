@@ -1,0 +1,130 @@
+    1  yup update -y
+    2  yum update -y
+    3  vi /etc/yum.repos.d/CentOS-Base.repo
+    4  yum update -y
+    5  date
+    6  history'
+    7  history
+    8  yum -y install net-tools wget telnet yum-utils
+    9  yum install epel-release -y
+   10  cat <<EOF>> /etc/hosts
+   11  192.168.0.41 master
+   12  192.168.0.42 worker1
+   13  192.168.0.43 worker2
+   14  EOF
+   15  hostnamectl set-hostname master
+   16  exit
+   17  sudo -i
+   18  cat /etc/hosts
+   19  swapoff -a
+   20  setenforce 0
+   21  sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+   22  init 6
+   23  ifconfig 
+   24  systemctl restart firewalld
+   25  systemctl enable firewalld
+   26  systemctl start firewalld
+   27  vi /etc/fstab 
+   28  df -h
+   29  wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+   30  ls
+   31  vi kube-flannel.yml 
+   32  kubectl apply -f kube-flannel.yml
+   33  firewall-cmd --permanent --add-port=6443/tcp
+   34  firewall-cmd --permanent --add-port=2379-2380/tcp
+   35  firewall-cmd --permanent --add-port=10250/tcp
+   36  firewall-cmd --permanent --add-port=10251/tcp
+   37  firewall-cmd --permanent --add-port=10252/tcp
+   38  firewall-cmd --permanent --add-port=10255/tcp
+   39  firewall-cmd –-reload
+   40  systemctl restart firewalld
+   41  systemctl enable firewalld
+   42  systemctl start firewalld
+   43  firewall-cmd --permanent --add-port=6443/tcp
+   44  firewall-cmd --permanent --add-port=2379-2380/tcp
+   45  firewall-cmd --permanent --add-port=10250/tcp
+   46  firewall-cmd --permanent --add-port=10251/tcp
+   47  firewall-cmd --permanent --add-port=10252/tcp
+   48  firewall-cmd --permanent --add-port=10255/tcp
+   49  modprobe br_netfilter
+   50  echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+   51  yum install -y yum-utils
+   52  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+   53  yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   54  systemctl start docker
+   55  systemctl enable docker
+   56  cat<<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+   57  yum install -y kubelet kubeadm kubectl
+   58  vi /etc/yum.repos.d/kubernetes.repo 
+   59  yum install -y kubelet kubeadm kubectl
+   60  vi /etc/yum.repos.d/kubernetes.repo 
+   61  yum install -y kubelet kubeadm kubectl
+   62  vi /etc/yum.repos.d/kubernetes.repo 
+   63  yum install -y kubelet kubeadm kubectl
+   64  vi /etc/yum.repos.d/kubernetes.repo 
+   65  yum install -y kubelet kubeadm kubectl
+   66  systemctl enable kubelet
+   67  systemctl start kubelet
+   68  kubeadm init
+   69  sudo yum update -y kubeadm
+   70  yum update --all
+   71  yum update -y
+   72  kubeadm version
+   73  kubeadm init
+   74  kubectl apply -f kube-flannel.yml
+   75  kubeadm init
+   76  systemctl  status status kubectl
+   77  systemctl  status status kubeadm
+   78  systemctl  status kubectl
+   79  systemctl  status kubeadm
+   80  systemctl  status docker
+   81  systemctl  status kubelet
+   82  systemctl  start  kubelet
+   83  systemctl  status  kubelet
+   84  clear
+   85  systemctl  start  kubelet
+   86  systemctl  status  kubelet
+   87  journalctl -xeu kubelet
+   88  cat /var/lib/kubelet/config.yaml
+   89  rm /etc/containerd/config.toml 
+   90  systemctl  start  kubelet
+   91  systemctl  status  kubelet
+   92  systemctl  start  kubelet
+   93  systemctl  restart  kubelet
+   94  systemctl  status  kubelet
+   95  swapoff -a
+   96  systemctl  restart  kubelet
+   97  systemctl  status  kubelet
+   98  kubeadm init
+   99  systemctl  status  kubelet
+  100  cat /proc/swaps 
+  101  vi /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+  102  systemctl restart containerd
+  103  systemctl status containerd
+  104  kubeadm init
+  105  systemctl  status  kubelet
+  106  wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  107  ls
+  108  kubectl apply -f kube-flannel.yml
+  109  kubectl  get pod
+  110  vi kube-flannel.yml
+  111  mv kube-flannel.yml kube-flannel.yml_bk
+  112  vi kube-flannel.yml
+  113  kubectl  apply -f kube-flannel.yml
+  114  kubectl get nodes
+  115  mkdir -p $HOME/.kube
+  116  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  117  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  118  kubectl  apply -f kube-flannel.yml
+  119  kubectl  get pod
+  120  kubectl  get pod -n kube-system
+  121  history > k8s_master
